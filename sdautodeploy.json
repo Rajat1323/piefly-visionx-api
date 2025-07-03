@@ -1,0 +1,22 @@
+[
+  {
+    "scriptname": "Deploy Dev",
+    "host": "154.49.243.158",
+    "username": "root",
+    "password": "",
+    "privateKey": "-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdz\nc2gtcnNhAAAAAwEAAQAAAQEAjNZPjDtj43+OF2kOjgbCwcy0V+Mco0yR6uannESL\nHH/nlLiLqJm5mt6Z+C6KCyib5qG4Xd4qdqwvW35CbJrk9g0l9EVivExETBCUcpGg\n6EqLvFUMWpN8KU4V9acsbQ7QOJgd620QdKWVmD1FZ/5JKKlYqmI+OsUs2Au5s0uv\ni/YfAtyqh23iy2bNivTHS/crD0kGkXc/oy3UZREwDfFousIPROowMvliwVFeYhiz\npX0MRUS33L9FsFrEItfR07QnQ+6+CuMYBlLv+yihTqwMo/6bswU5mKNOHjOTmsxU\noPnhxWwd1W2XhMNhpCM9lKAsqRAiAHK8/2zgLgwcF8rKUwAAA9BwhapYcIWqWAAA\nAAdzc2gtcnNhAAABAQCM1k+MO2Pjf44XaQ6OBsLBzLRX4xyjTJHq5qecRIscf+eU\nuIuombma3pn4LooLKJvmobhd3ip2rC9bfkJsmuT2DSX0RWK8TERMEJRykaDoSou8\nVQxak3wpThX1pyxtDtA4mB3rbRB0pZWYPUVn/kkoqViqYj46xSzYC7mzS6+L9h8C\n3KqHbeLLZs2K9MdL9ysPSQaRdz+jLdRlETAN8Wi6wg9E6jAy+WLBUV5iGLOlfQxF\nRLfcv0WwWsQi19HTtCdD7r4K4xgGUu/7KKFOrAyj/puzBTmYo04eM5OazFSg+eHF\nbB3VbZeEw2GkIz2UoCypECIAcrz/bOAuDBwXyspTAAAAAwEAAQAAAQAMVTwUEKNX\nqbTcsfN3Vno5lF56j8XTOwJQKrCky4/PCBhUerCoLAYH3NRo2lJ2VbEJSkIl3i2j\nxMJE5dKVRh8kuNQJBwZ1bMxSSOVm/v+zN8vyyxPQ3rdxuofLwj7usexj+FYuZpeZ\nT2LBOSRZzffEGshL61x9swSRSr2RSOBvhhWnYMarLckXgdHWx8O6Ajj4ay5mMnFM\nRPRRLaqryGjwgIyDr6uh5NEoNKSYFlT5TW9+UwfaV3+nrx7gCtvNY6B2ejTqXTEn\nHSjMxvthIGae94q82dQ+JGg6VJmaHb8xEMppDRMKdolfKV4xoy63UdieueXa9ju0\nMGfGYYEm3UYJAAAAgG4GW5ow3lfSZfctxDR9w8C3RMxT3OoaZyXBp52FLEXHu2eX\n876TKOxA+LKxeQXs17VINmRpQc4AnK+KfWxEcaLCMJKU0Wxf5dJGnPbEPU0zKq00\nu+rJKlXMxdp1sKutzv2jjC5OF1V9R0qV66ldkjPLYPYulgJeKsqj8RBmjLQnAAAA\ngQDNZ+jcUUBdsYlbtQxRCm0jfy5KZOtwS80/p3YhMU+cIwcImY952F5aVNuo+2d0\nSjYScMU80GLd76JsztJnHAoACkYeWczP3WVp8fNHwUEgpAnQKQh7EHfqXWRlIIiG\nyXBwK9lzRbpOOM/qebXfBiCWRNDKH0kbcqP0GI5X8GoNlwAAAIEAr4bzACEDiFgj\n8/jlzrjSHZH4nmd6qKKePxbSELcdJm9tuKQeqDA1ddgEMUl6YMiXRxmpAH78RvVd\nzvUFHI4G8UpmrVDozeDUMMtv9N6RVv7sSc3anZz41VWgTXKTrn3VNb6H0pgxzKIk\nvY4ySzgomzptcOkN2xMArsI99FAhOKUAAAAQcnNhLWtleS0yMDIzMDkxNgECAwQF\nBgcICQoL\n-----END OPENSSH PRIVATE KEY-----",
+    "remotePath": "/root/sterlitepower.gis.dhineu.in",
+    "localDirectoryList": [
+      "package.json"
+    ],
+    "localContentDirectoryList": [
+      "dist"
+    ],
+    "cleanDeploy": true,
+    "preDeploymentScript": "npm run build && copy .env_dev dist\\.env",
+    "postDeploymentScript": "source ~/.nvm/nvm.sh && npm i --force && pm2 delete sterlitepower.gis.dhineu.in || true && pm2 start main.js --name sterlitepower.gis.dhineu.in && pm2 save && pm2 startup && pm2 startup systemd && systemctl enable pm2-root && systemctl start pm2-root",
+    "connectionType": "SSH",
+    "runInDeployPath": true,
+    "randomId": 13502940
+  }
+]
